@@ -39,6 +39,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // La liste des différents routeurs (dans l'ordre)
 app.use('/', require('./routes/index'))
 app.use('/users', require('./routes/users'))
+app.use('/todos', require('./routes/todos'))
 
 // Erreur 404
 app.use(function(req, res, next) {
@@ -70,12 +71,6 @@ app.use(function(err, req, res, next) {
     json: () => { res.send(data) }
   })
 })
-
-// db.open('bdd.db').then(() => {
-//   console.log('> BDD opened')
-//   return db.run('CREATE TABLE IF NOT EXISTS users (pseudo, email, firstname, createdAt)')
-// }).then(() => {
-//   console.log('> Tables persisted')
 
   app.listen(PORT, () => {
     console.log('> Serveur démarré sur le port : ', PORT)

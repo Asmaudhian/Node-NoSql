@@ -33,19 +33,19 @@ router.post('/login', function(req, res, next) {
   }
 })
 
-router.get('/todos', (req, res, next) => {
-  res.format({
-    html: () => {
-      res.render('todos', {
-        user: {},
-        action: '/todos'
-      })
-    },
-    json: () => {
-      let err = new Error('Bad Request')
-      err.status = 400
-      next(err)
-    }
-  })
-})
+// router.get('/todos', (req, res, next) => {
+//   res.format({
+//     html: () => {
+//       res.render('todos', {
+//         user: {},
+//         action: '/todos'
+//       })
+//     },
+//     json: () => {
+//       let err = new Error('Bad Request')
+//       err.status = 400
+//       next(err)
+//     }
+//   })
+// })
 module.exports = router

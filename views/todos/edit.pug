@@ -1,0 +1,26 @@
+extends ../layout
+
+block content
+  h1= title
+
+  p Editer la Todo :
+
+  form(action=action method='post')
+    table(border=1)
+      tr
+        th Id
+        td= task._id
+      tr
+        th Pour
+        td
+          input(name='for' value=task.for placeholder=task.for)
+      tr
+        th Tache
+        td
+          input(name='desc' value=task.desc)
+      tr
+        th Team
+        td
+          input(name='team' value=task.teamId)
+
+    input(type='submit', value='Envoyer')

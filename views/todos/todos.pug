@@ -1,4 +1,4 @@
-extends layout
+extends ../layout
 
 block content
   h1= title
@@ -10,15 +10,15 @@ block content
       th Id
       th Pour
       th Tâche
-      th Crée le
+      th Team
       th Actions
 
-    each user in users
+    each task in todos
       tr
         td= task._id
         td= task.for
         td= task.desc
-        td= task.createdAt
+        td= task.teamId
         td
           ul
             li
