@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  h1= title
+
+  p Voici la ToDoList :
+
+  table(border=1)
+    tr
+      th Id
+      th Pour
+      th Tâche
+      th Crée le
+      th Actions
+
+    each user in users
+      tr
+        td= task._id
+        td= task.for
+        td= task.desc
+        td= task.createdAt
+        td
+          ul
+            li
+              a(href="/todos/" + task._id) Voir
+            li
+              a(href="/todos/" + task._id + '/edit') Éditer
+            li
+              a(href="/todos/" + task._id + '?_method=delete') Supprimer

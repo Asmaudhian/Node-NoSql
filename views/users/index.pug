@@ -1,0 +1,29 @@
+extends ../layout
+
+block content
+  h1= title
+
+  p Voici la liste des utilisateurs :
+
+  table(border=1)
+    tr
+      th Id
+      th Username
+      th Name
+      th Mail
+      th Actions
+
+    each user in users
+      tr
+        td= user._id
+        td= user.username
+        td= user.name
+        td= user.mail
+        td
+          ul
+            li
+              a(href="/users/" + user._id) Voir
+            li
+              a(href="/users/" + user._id + '/edit') Éditer
+            li
+              a(href="/users/" + user._id + '?_method=delete') Supprimer

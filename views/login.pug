@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1= title
+
+  p Connectez-vous :
+  form(action=login method='post')
+    table(border=1)
+      tr
+        th Username
+        td
+          input(name='username')
+      tr
+        th Mot de passe
+        td
+          input(name='password')
+
+    input(type='submit', value='Envoyer')
