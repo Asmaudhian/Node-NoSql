@@ -1,8 +1,8 @@
 const router = require('express').Router()
 const Todo = require('../models/todos')
 
+// Page des todos
 router.get('/', (req, res, next) => {
-
   Todo.getAll().then((results) => {
     res.format({
       html: () => {
@@ -23,6 +23,7 @@ router.get('/', (req, res, next) => {
   }).catch(next)
 })
 
+// Page d'ajout des todos'
 router.get('/add', (req, res, next) => {
   res.format({
     html: () => {
@@ -39,6 +40,7 @@ router.get('/add', (req, res, next) => {
   })
 })
 
+// Page lorsqu'on selectionne une todo
 router.get('/:taskId', (req, res, next) => {
   Todo.get(req.params.taskId).then((task) => {
     if (!task) return next()
@@ -50,6 +52,7 @@ router.get('/:taskId', (req, res, next) => {
   }).catch(next)
 })
 
+// Redirection de la page d'ajout vers la liste des todos'
 router.post('/', (req, res, next) => {
   Todo.insert(req.body).then(() => {
     res.format({
@@ -57,12 +60,13 @@ router.post('/', (req, res, next) => {
         res.redirect('/todos')
       },
       json: () => {
-        res.status(201).send({message: 'success'})
+        res.status(201).send({ message: 'success' })
       }
     })
   }).catch(next)
 })
 
+// On édite une todos
 router.get('/:taskId/edit', (req, res, next) => {
   res.format({
     html: () => {
@@ -82,6 +86,7 @@ router.get('/:taskId/edit', (req, res, next) => {
   })
 })
 
+// On supprime une todo
 router.delete('/:taskId', (req, res, next) => {
   Todo.remove(req.params.taskId).then(() => {
     res.format({
@@ -91,12 +96,13 @@ router.delete('/:taskId', (req, res, next) => {
   }).catch(next)
 })
 
+// Redirection de la page d'édition vers la page de todos'
 router.put('/:taskId', (req, res, next) => {
   Todo.update(req.params.taskId, req.body)
-    res.format({
-      html: () => { res.redirect('/todos') },
-      json: () => { res.send({ message: 'success' }) }
-    })
+  res.format({
+    html: () => { res.redirect('/todos') },
+    json: () => { res.send({ message: 'success' }) }
+  })
 })
 
 module.exports = router

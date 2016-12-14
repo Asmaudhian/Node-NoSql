@@ -3,6 +3,9 @@ extends ../layout
 block content
   h1= title
 
+  button 
+    a(href="/") Index
+
   p Voici la liste des utilisateurs :
 
   table(border=1)
@@ -27,3 +30,7 @@ block content
               a(href="/users/" + user._id + '/edit') Éditer
             li
               a(href="/users/" + user._id + '?_method=delete') Supprimer
+
+
+  button 
+    a(href="/users/add") Ajouter un utilisateur

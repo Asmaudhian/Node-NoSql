@@ -3,3 +3,9 @@ extends layout
 block content
   h1= title
   p Bienvenue sur #{title}
+
+  p Que voulez vous faire ?
+  button 
+    a(href="/users") Users
+  button 
+    a(href="/todos") Todos

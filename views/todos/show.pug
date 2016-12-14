@@ -3,6 +3,9 @@ extends ../layout
 block content
   h1= title
 
+  button 
+    a(href="/todos") Retour
+
   p Voici la todo :
 
   table(border=1)
@@ -15,6 +18,6 @@ block content
     tr
       th Tache
       td= task.desc
-    tr
-      th Team
-      td= task.teamId
+    //- tr
+    //-   th Team
+    //-   td= task.teamId

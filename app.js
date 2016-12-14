@@ -30,7 +30,7 @@ app.use(sass({
 app.use(express.static(path.join(__dirname, 'assets')))
 
 // Method override
-app.use(methodOverride('_method', {methods: ['GET', 'POST']}))
+app.use(methodOverride('_method', { methods: ['GET', 'POST'] }))
 
 // Middleware pour parser le body
 app.use(bodyParser.json())
@@ -42,7 +42,7 @@ app.use('/users', require('./routes/users'))
 app.use('/todos', require('./routes/todos'))
 
 // Erreur 404
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   let err = new Error('Not Found')
   err.status = 404
   next(err)
@@ -50,7 +50,7 @@ app.use(function(req, res, next) {
 
 // Gestion des erreurs
 // Notez les 4 arguments !!
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // Les données de l'erreur
   let data = {
     message: err.message,
@@ -72,6 +72,6 @@ app.use(function(err, req, res, next) {
   })
 })
 
-  app.listen(PORT, () => {
-    console.log('> Serveur démarré sur le port : ', PORT)
-  })
+app.listen(PORT, () => {
+  console.log('> Serveur démarré sur le port : ', PORT)
+})

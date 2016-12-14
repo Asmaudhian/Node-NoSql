@@ -7,8 +7,8 @@ var todoSchema = new Schema({
   for: String,
   state: Boolean,
   created_at: Date,
-  updated_at: {type: Date, default: '0'} ,
-  teamId: { type: String, default: '0'}
+  updated_at: { type: Date, default: '0' },
+  teamId: Number
 });
 
 // On récupère le schéma défini au dessus
@@ -17,12 +17,12 @@ var Todo = mongoose.model('Todo', todoSchema);
 module.exports = {
   // On récupère une tache via son ID
   get: (taskId) => {
-    return Todo.find({_id:taskId}).exec()
+    return Todo.find({ _id: taskId }).exec()
   },
 
   // On récupère toutes les taches dans la collection
   getAll: () => {
-      return Todo.find().exec()
+    return Todo.find().exec()
   },
 
   // On crée une nouvelle tache
@@ -42,14 +42,13 @@ module.exports = {
   // On met à jour une tache
   update: (taskId, params) => {
 
-    Todo.update({_id:taskId}, {
-          desc: params.desc,
-          for: params.for,
-          state: params.state,
-          teamId: params.teamId,
-          updatedAt: Date.now()
-        }, function(error, rowAffected){
-      console.log(rowAffected)
+    Todo.update({ _id: taskId }, {
+      desc: params.desc,
+      for: params.for,
+      state: params.state,
+      teamId: params.teamId,
+      updatedAt: Date.now()
+    }, function (error, rowAffected) {
       if (rowAffected.nModified) {
         let err = new Error('Not Found')
         err.status = 404
@@ -60,12 +59,12 @@ module.exports = {
 
   // On supprime une tache
   remove: (taskId) => {
-     return Todo.findOneAndRemove({_id:taskId}, function(error){
-       if(error){
-         let err = new Error('Bad request')
-         err.status = 400
-         return Promise.reject(err)
-       }
-     })
+    return Todo.findOneAndRemove({ _id: taskId }, function (error) {
+      if (error) {
+        let err = new Error('Bad request')
+        err.status = 400
+        return Promise.reject(err)
+      }
+    })
   }
 }

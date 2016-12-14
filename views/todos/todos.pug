@@ -3,6 +3,9 @@ extends ../layout
 block content
   h1= title
 
+  button 
+    a(href="/") Index
+
   p Voici la ToDoList :
 
   table(border=1)
@@ -10,7 +13,8 @@ block content
       th Id
       th Pour
       th Tâche
-      th Team
+      th Effectué
+      //- th Team
       th Actions
 
     each task in todos
@@ -18,7 +22,8 @@ block content
         td= task._id
         td= task.for
         td= task.desc
-        td= task.teamId
+        td= task.state
+        //- td= task.teamId
         td
           ul
             li
@@ -27,3 +32,6 @@ block content
               a(href="/todos/" + task._id + '/edit') Éditer
             li
               a(href="/todos/" + task._id + '?_method=delete') Supprimer
+      
+  button 
+      a(href="/todos/add") Ajouter une tache

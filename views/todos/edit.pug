@@ -3,6 +3,9 @@ extends ../layout
 block content
   h1= title
 
+  button 
+    a(href="/todos") Retour
+
   p Editer la Todo :
 
   form(action=action method='post')
@@ -19,8 +22,12 @@ block content
         td
           input(name='desc' value=task.desc)
       tr
-        th Team
+        th Effectué
         td
-          input(name='team' value=task.teamId)
+          input(name='state' value=task.state)
+      //- tr
+      //-   th Team
+      //-   td
+      //-     input(name='team' value=task.teamId)
 
     input(type='submit', value='Envoyer')

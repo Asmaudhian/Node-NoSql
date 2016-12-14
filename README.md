@@ -1,14 +1,19 @@
-#wik-njs-303-skeleton
+#Projet NodeJs - NoSql
 
-Simple ExpressJS skeleton.
+Réalisé par Duncan Le Goff
 
-## Install
+## Installation
 
-    git clone https://github.com/Tronix117/wik-njs-303-skeleton.git
-    cd wik-njs-303-skeleton
+    git clone https://github.com/Asmaudhian/Node-NoSql.git
+    cd Node-NoSql
     npm install
 
-## Usage
+## Utilisation
 
     npm start
 
+## Pages
+
+    /login : Connexion
+    /users : Gestion des utilisateurs
+    /todos : Gestion des todos
